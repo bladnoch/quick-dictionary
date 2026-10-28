@@ -1,0 +1,24 @@
+{
+  "searchResultMap": {
+    "searchResultListMap": {
+      "WORD": {
+        "items": [
+          {
+            "expEntry": "<strong>warehouse</strong>",
+            "sourceDictnameKO": "옥스퍼드 영한사전",
+            "meansCollector": [
+              {
+                "partOfSpeech": "명사",
+                "means": [
+                  {
+                    "value": "창고"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

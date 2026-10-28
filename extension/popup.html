@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>선택 사전 설정</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="shared.js" defer></script>
+  <script src="messaging.js" defer></script>
+  <script src="popup.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="top">
+      <img src="icons/icon48.png" width="40" height="40" alt="">
+      <div><h1>선택 사전</h1><p>단어는 사전으로, 문장은 번역으로.</p></div>
+      <label class="switch" for="enabled"><input id="enabled" type="checkbox" aria-label="드래그 조회 사용"><span></span></label>
+    </header>
+    <div class="route"><span><b class="naver">N</b>단어 → 네이버 영어사전</span><span><b class="google">G</b>문장 → Google 번역</span></div>
+    <form id="settings-form">
+      <fieldset class="section modes">
+        <legend>드래그했을 때</legend>
+        <label class="choice" for="mode-button"><input id="mode-button" type="radio" name="selectionMode" value="button"><span><strong>번역 버튼 먼저 표시</strong><small>선택한 내용 옆의 버튼을 누르면 조회합니다.</small></span><span class="mini" aria-hidden="true">N 사전 찾기</span></label>
+        <label class="choice" for="mode-auto"><input id="mode-auto" type="radio" name="selectionMode" value="auto"><span><strong>선택 즉시 자동 표시</strong><small>드래그를 마치면 결과를 바로 보여 줍니다.</small></span><span class="mini auto" aria-hidden="true">자동</span></label>
+      </fieldset>
+      <section class="section">
+        <div class="row"><span>결과 표시</span><strong>페이지 안 말풍선</strong></div>
+        <div class="row"><label for="targetLanguage">문장 번역 언어</label><select id="targetLanguage"><option value="ko">한국어</option><option value="en">영어</option><option value="ja">일본어</option><option value="zh-CN">중국어(간체)</option><option value="es">스페인어</option><option value="fr">프랑스어</option><option value="de">독일어</option></select></div>
+        <p class="micro">조회에 실패해도 새 창은 자동으로 열지 않습니다. 오류와 다시 시도 버튼을 말풍선 안에 표시합니다.</p>
+      </section>
+      <details class="section advanced">
+        <summary>세부 설정</summary>
+        <div class="row"><label for="phraseWordLimit">사전으로 보낼 범위</label><select id="phraseWordLimit" aria-describedby="phrase-hint"><option value="1">한 단어</option><option value="2">두 단어 이하</option><option value="3">세 단어 이하</option></select></div>
+        <p class="micro" id="phrase-hint">기본값은 한 단어입니다. 두 단어 이상은 문장 번역으로 보냅니다. 하이픈과 아포스트로피는 단어 안에서 허용합니다.</p>
+        <div class="row"><label for="autoDelay">드래그 후 대기 <output id="delay-value"></output></label><input id="autoDelay" type="range" min="150" max="1000" step="50"></div>
+        <label class="check" for="ignoreEditable"><input id="ignoreEditable" type="checkbox" aria-describedby="editable-hint"><span>입력창·편집 영역에서는 자동 조회하지 않기</span></label>
+        <p class="micro" id="editable-hint">기본값은 편집 영역에서도 사용입니다. 노션 등의 작성 중인 텍스트를 선택할 수 있습니다. 타이핑만 할 때는 조회하지 않으며, 비밀번호·인증번호 필드는 항상 제외합니다.</p>
+        <label class="textarea-label" for="excludedDomains">사용하지 않을 사이트</label>
+        <p class="micro" id="domain-hint">한 줄에 도메인 하나 · 하위 도메인도 포함</p>
+        <textarea id="excludedDomains" aria-describedby="domain-hint" rows="3" placeholder="example.com&#10;mail.example.org" spellcheck="false"></textarea>
+      </details>
+      <div id="site-control" class="site-control" hidden><span id="site-name"></span><button id="site-toggle" type="button"></button></div>
+      <section class="section lookup-section">
+        <label for="manual-text">직접 찾기</label>
+        <div class="search-row"><input id="manual-text" type="text" maxlength="5000" placeholder="단어나 문장을 입력하세요" autocomplete="off"><button id="manual-lookup" type="button">찾기</button></div>
+        <p class="micro">직접 입력한 내용도 이 창 안에 결과를 표시합니다.</p>
+        <div id="manual-result" class="manual-result" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+        <a id="manual-open" class="micro" target="_blank" rel="noopener noreferrer" hidden>공식 사이트에서 직접 열기 ↗</a>
+      </section>
+      <div class="save-row"><span id="save-state" role="status" aria-live="polite">설정 불러오는 중…</span><button type="submit" class="save">설정 저장</button></div>
+    </form>
+    <footer><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> 선택 조회 <span>·</span> <a href="welcome.html" target="_blank" rel="noopener">사용 안내</a><p><button id="connection-check" type="button">연결 확인</button></p><p id="connection-status" role="status" aria-live="polite" hidden></p><p>선택한 내용만 해당 서비스로 보냅니다. 검색 기록은 확장 프로그램에 저장하지 않습니다.</p></footer>
+  </main>
+</body>
+</html>

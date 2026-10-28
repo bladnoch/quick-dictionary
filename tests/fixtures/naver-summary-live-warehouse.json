@@ -1,0 +1,7 @@
+{
+"query" : ["warehouse"],
+"items" : [
+[[["warehouse"],[""],["창고"]],[["Warehouse"],[""],["WHSE"]],[["warehouseman"],[""],["창고 관리인, 창고업자, 도매 상인"]],[["warehouse store"],[""],["할인 매장"]],[["Warehouse Management System"],[""],["창고 관리시스템"]],[["warehouse control system"],[""],["WCS,창고 관리 체계, 물류 센터 관리 시스템"]],[["warehouse keeper"],[""],["창고계, 창고지기"]],[["warehouse refusal"],[""],["창고부도"]]],
+[[["bonded warehouse"],[""],["보세 창고"]],[["customs warehouse"],[""],["보세창고"]],[["data warehouse"],[""],["데이터 웨어하우스"]]]
+]
+}
